@@ -2,7 +2,7 @@ namespace Catalog.Repositories;
 
 using Catalog.Entities;
 
-public interface IInMemItemsRepository
+public interface IDbCRUDOperations
 {
     Item GetItem(Guid id);
     IEnumerable<Item> GetItems();

@@ -11,9 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/v1/[controller]")]
 public class ItemsController : ControllerBase
 {
-    private readonly IInMemItemsRepository _repository;
+    private readonly IDbCRUDOperations _repository;
 
-    public ItemsController(IInMemItemsRepository repository)
+    public ItemsController(IDbCRUDOperations repository)
     {
         _repository = repository;
     }

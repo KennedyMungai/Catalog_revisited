@@ -3,7 +3,7 @@ using Catalog.Entities;
 namespace Catalog.Repositories;
 
 
-public class InMemItemsRepository : IInMemItemsRepository
+public class InMemItemsRepository : IDbCRUDOperations
 {
     private readonly List<Item> items = new()
     {

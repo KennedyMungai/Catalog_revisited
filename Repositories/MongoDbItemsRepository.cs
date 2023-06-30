@@ -3,7 +3,7 @@ using Catalog.Entities;
 namespace Catalog.Repositories;
 
 
-public class MongoDbItemsRepository : IInMemItemsRepository
+public class MongoDbItemsRepository : IDbCRUDOperations
 {
     public void CreateItem(Item item)
     {
