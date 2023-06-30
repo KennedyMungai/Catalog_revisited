@@ -28,7 +28,7 @@ public class ItemsController : ControllerBase
     [HttpGet("{id}", Name = "Get Item")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public ActionResult<Item> GetItemEndpoint(Guid id)
+    public ActionResult<ItemDto> GetItemEndpoint(Guid id)
     {
         var item = _repository.GetItem(id).AsDto();
         if (item == null)
