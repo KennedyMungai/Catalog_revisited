@@ -1,3 +1,4 @@
+using Catalog.Entities;
 using Catalog.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,5 +13,13 @@ public class ItemsController : ControllerBase
     public ItemsController(InMemItemsRepository repository)
     {
         _repository = repository;
+    }
+
+    [HttpGet(Name = "Get All Items")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public ActionResult<List<Item>> GetAllItemsEndpoint()
+    {
+        var items = _repository.GetItems();
+        return Ok(items);
     }
 }
