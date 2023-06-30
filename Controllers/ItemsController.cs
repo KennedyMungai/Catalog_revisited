@@ -1,3 +1,4 @@
+using System.Diagnostics;
 namespace Catalog.Controllers;
 
 using System.Linq;
@@ -38,4 +39,21 @@ public class ItemsController : ControllerBase
         return Ok(item.AsDto());
     }
 
+
+    [HttpPost(Name = "Create Item")]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    public ActionResult<ItemDto> CreateItemEndpoint(CreateItemDto itemDto)
+    {
+        Item item = new()
+        {
+            Id = Guid.NewGuid(),
+            Name = itemDto.Name,
+            Price = itemDto.Price,
+            CreatedDate = DateTimeOffset.UtcNow
+        };
+
+        _repository.CreateItem(item);
+
+        return CreatedAtAction(nameof(GetItemEndpoint), new { id = item.Id }, item.AsDto());
+    }
 }
