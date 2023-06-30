@@ -56,4 +56,27 @@ public class ItemsController : ControllerBase
 
         return CreatedAtAction(nameof(GetItemEndpoint), new { id = item.Id }, item.AsDto());
     }
+
+    [HttpPut("{id}", Name = "Update Item")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public ActionResult UpdateItemEndpoint(Guid id, UpdateItemDto itemDto)
+    {
+        var existingItem = _repository.GetItem(id);
+
+        if (existingItem is null)
+        {
+            return NotFound();
+        }
+
+        Item updatedItem = existingItem with
+        {
+            Name = itemDto.Name,
+            Price = itemDto.Price
+        };
+
+        _repository.UpdateItem(updatedItem);
+
+        return NoContent();
+    }
 }
