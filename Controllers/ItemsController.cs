@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/v1/[controller]")]
 public class ItemsController : ControllerBase
 {
-    private readonly InMemItemsRepository _repository;
+    private readonly IInMemItemsRepository _repository;
 
     public ItemsController(InMemItemsRepository repository)
     {
