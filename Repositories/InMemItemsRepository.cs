@@ -29,4 +29,9 @@ public class InMemItemsRepository
             CreatedDate = DateTimeOffset.UtcNow
         },
     };
+
+    public IEnumerable<Item> GetItems()
+    {
+        return items;
+    }
 }
