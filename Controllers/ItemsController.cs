@@ -10,7 +10,7 @@ public class ItemsController : ControllerBase
 {
     private readonly IInMemItemsRepository _repository;
 
-    public ItemsController(InMemItemsRepository repository)
+    public ItemsController(IInMemItemsRepository repository)
     {
         _repository = repository;
     }
