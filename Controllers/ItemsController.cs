@@ -79,4 +79,21 @@ public class ItemsController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpDelete("{id}", Name = "Delete Item")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public ActionResult DeleteItemEndpoint(Guid id)
+    {
+        var existingItem = _repository.GetItem(id);
+
+        if (existingItem is null)
+        {
+            return NotFound();
+        }
+
+        _repository.DeleteItem(id);
+
+        return NoContent();
+    }
 }
