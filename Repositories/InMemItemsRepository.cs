@@ -43,7 +43,7 @@ public class InMemItemsRepository : IInMemItemsRepository
 
     public void CreateItem(Item item)
     {
-
+        items.Add(item);
     }
 
 }
