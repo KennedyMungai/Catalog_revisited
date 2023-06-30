@@ -1,5 +1,7 @@
 namespace Catalog.Controllers;
 
+using System.Linq;
+using Catalog.Dto;
 using Catalog.Entities;
 using Catalog.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -17,9 +19,15 @@ public class ItemsController : ControllerBase
 
     [HttpGet(Name = "Get All Items")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public ActionResult<List<Item>> GetAllItemsEndpoint()
+    public ActionResult<List<ItemDto>> GetAllItemsEndpoint()
     {
-        var items = _repository.GetItems();
+        var items = _repository.GetItems().Select(item => new ItemDto
+        {
+            Id = item.Id,
+            Name = item.Name,
+            Price = item.Price,
+            CreatedDate = item.CreatedDate
+        });
         return Ok(items);
     }
 
