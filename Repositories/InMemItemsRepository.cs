@@ -40,4 +40,10 @@ public class InMemItemsRepository : IInMemItemsRepository
         var item = items.Where(item => item.Id == id).SingleOrDefault();
         return item;
     }
+
+    public void CreateItem(Item item)
+    {
+
+    }
+
 }
