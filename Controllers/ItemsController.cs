@@ -21,13 +21,7 @@ public class ItemsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     public ActionResult<List<ItemDto>> GetAllItemsEndpoint()
     {
-        var items = _repository.GetItems().Select(item => new ItemDto
-        {
-            Id = item.Id,
-            Name = item.Name,
-            Price = item.Price,
-            CreatedDate = item.CreatedDate
-        });
+        var items = _repository.GetItems().Select(item => item.AsDto());
         return Ok(items);
     }
 
