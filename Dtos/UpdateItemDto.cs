@@ -1,4 +1,4 @@
-namespace Catalog.Dtos;
+namespace Catalog.Dto;
 
 using System.ComponentModel.DataAnnotations;
 
