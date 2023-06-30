@@ -30,12 +30,12 @@ public class ItemsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public ActionResult<ItemDto> GetItemEndpoint(Guid id)
     {
-        var item = _repository.GetItem(id).AsDto();
+        var item = _repository.GetItem(id);
         if (item == null)
         {
             return NotFound();
         }
-        return Ok(item);
+        return Ok(item.AsDto());
     }
 
 }
