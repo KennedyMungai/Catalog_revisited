@@ -34,4 +34,10 @@ public class InMemItemsRepository
     {
         return items;
     }
+
+    public Item GetItem(Guid id)
+    {
+        var item = items.Where(item => item.Id == id).SingleOrDefault();
+        return item;
+    }
 }
